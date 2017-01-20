@@ -79,7 +79,7 @@ class User_detail extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['user_name' => $username, 'is_active' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'is_active' => self::STATUS_ACTIVE]);
     }
 
     /**

@@ -10,7 +10,7 @@ class m170120_194724_user_details extends Migration
         $this->createTable('{{%user_details}}', [
             'user_id' => "int(11) NOT NULL AUTO_INCREMENT",
             0 => 'PRIMARY KEY (`user_id`)',
-            'user_name' => "varchar(200) NOT NULL",
+            'username' => "varchar(200) NOT NULL",
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),

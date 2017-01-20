@@ -10,9 +10,10 @@ use yii\base\Model;
  */
 class SignupForm extends Model
 {
-    public $user_name;
+    public $username;
     public $email;
     public $password;
+    public $verifyCode;
 
 
     /**
@@ -21,10 +22,10 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['user_name', 'trim'],
-            ['user_name', 'required'],
-            ['user_name', 'unique', 'targetClass' => '\frontend\models\User_detail', 'message' => 'This username has already been taken.'],
-            ['user_name', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => '\frontend\models\User_detail', 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
@@ -34,6 +35,8 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -49,7 +52,7 @@ class SignupForm extends Model
         }
         
         $user = new User_detail();
-        $user->user_name = $this->user_name;
+        $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
