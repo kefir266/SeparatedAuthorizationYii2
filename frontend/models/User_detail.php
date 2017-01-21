@@ -51,7 +51,7 @@ class User_detail extends ActiveRecord implements IdentityInterface
     {
         return [
             ['is_active', 'default', 'value' => self::STATUS_ACTIVE],
-            //['is_active' => self::STATUS_ACTIVE],
+            ['is_active', 'in', 'range' => [self::STATUS_ACTIVE]],
         ];
     }
 
